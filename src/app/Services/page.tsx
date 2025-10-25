@@ -4,13 +4,7 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
-import {
-  Briefcase,
-  School,
-  Users,
-  Heart,
-  User
-} from "lucide-react";
+import { Briefcase, School, Users, Heart, User } from "lucide-react";
 
 export default function ServicesPage() {
   const router = useRouter();

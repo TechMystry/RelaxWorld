@@ -158,11 +158,12 @@ export default function TestimonialsSection() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
-                className="bg-white rounded-2xl shadow-xl p-6 sm:p-8"
+                className="relative bg-white rounded-2xl shadow-xl p-6 sm:p-8 will-change-transform"
+                style={{ willChange: 'transform, opacity' }}
                 initial={{ opacity: 0, x: 100, scale: 0.95 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 exit={{ opacity: 0, x: -100, scale: 0.95 }}
-                transition={{ duration: 0.5, ease: 'easeInOut' }}
+                transition={{ type: 'tween', duration: 0.5, ease: 'easeInOut' }}
                 whileHover={{ scale: 1.02 }}
               >
                 <Quote className="absolute top-6 right-6 w-12 h-12 text-orange-100" />
@@ -204,7 +205,7 @@ export default function TestimonialsSection() {
             <div className="flex items-center justify-center gap-4 mt-8">
               <button
                 onClick={prev}
-                className="p-3 rounded-full bg-white shadow-lg hover:bg-orange-50 transition-colors"
+                className="p-3 rounded-full bg-white shadow-lg hover:bg-orange-50 transition-colors z-50 relative"
                 aria-label="Previous testimonial"
               >
                 <ChevronLeft className="w-6 h-6 text-gray-700" />
@@ -215,9 +216,7 @@ export default function TestimonialsSection() {
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      index === currentIndex ? 'w-8 bg-orange-500' : 'w-2 bg-gray-300'
-                    }`}
+                    className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex ? 'w-8 bg-orange-500' : 'w-2 bg-gray-300'}`}
                     aria-label={`Go to testimonial ${index + 1}`}
                     aria-selected={index === currentIndex}
                     role="tab"
@@ -227,7 +226,7 @@ export default function TestimonialsSection() {
 
               <button
                 onClick={next}
-                className="p-3 rounded-full bg-white shadow-lg hover:bg-orange-50 transition-colors"
+                className="p-3 rounded-full bg-white shadow-lg hover:bg-orange-50 transition-colors z-50 relative"
                 aria-label="Next testimonial"
               >
                 <ChevronRight className="w-6 h-6 text-gray-700" />
@@ -241,7 +240,8 @@ export default function TestimonialsSection() {
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.id}
-              className="bg-white rounded-2xl shadow-lg p-8 relative group hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+              className="bg-white rounded-2xl shadow-lg p-8 relative group hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 will-change-transform"
+              style={{ willChange: 'transform, opacity' }}
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

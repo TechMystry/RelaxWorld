@@ -10,15 +10,15 @@ export function Gallery() {
 
   const galleryImages = [
     { url: "/Photo_1.jpg", title: "Tropical Paradise", span: "row-span-2" },
-    { url: "https://images.unsplash.com/photo-1543169564-be8896b30cdb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080", title: "Mountain Adventures" },
-    { url: "https://images.unsplash.com/photo-1593131540982-57778192fc21?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080", title: "European Cities" },
-    { url: "https://images.unsplash.com/photo-1602410125631-7e736e36797c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080", title: "Safari Expeditions", span: "col-span-2" },
-    { url: "https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080", title: "Group Adventures" },
-    { url: "https://images.unsplash.com/photo-1722409195473-d322e99621e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080", title: "Luxury Resorts" },
-    { url: "https://images.unsplash.com/photo-1665332025142-54d6daee4173?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080", title: "Cultural Wonders" },
-    { url: "https://images.unsplash.com/photo-1644659513503-abcbf75b4521?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080", title: "Northern Lights", span: "row-span-2" },
-    { url: "https://images.unsplash.com/photo-1507669653186-6d573feb190c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080", title: "Desert Dreams" },
-    { url: "https://images.unsplash.com/photo-1746900830074-baf6ddf20bca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080", title: "Ocean Cruises" },
+    { url: "/Photo_2.jpg", title: "Mountain Adventures" },
+    { url: "/Photo_3.jpg", title: "European Cities" },
+    { url: "/Photo_4.jpg", title: "Safari Expeditions", span: "col-span-2" },
+    { url: "/Photo_5.jpg", title: "Group Adventures" },
+    { url: "/Photo_6.jpg", title: "Luxury Resorts" },
+    { url: "/Photo_7.jpg", title: "Cultural Wonders" },
+    { url: "/Photo_8.jpg", title: "Northern Lights", span: "row-span-2" },
+    { url: "/Photo_9.jpg", title: "Desert Dreams" },
+    { url: "/Photo_10.jpg", title: "Ocean Cruises" },
   ];
 
   // Close lightbox on Escape key

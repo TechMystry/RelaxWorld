@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import Head from "next/head";
 import Image from "next/image";
@@ -35,7 +35,7 @@ export default function Hero() {
         />
       </Head>
 
-      <div className="relative min-h-screen flex flex-col md:flex-row bg-black">
+      <div className="relative min-h-screen flex flex-col-reverse md:flex-row bg-black">
         {/* Background */}
         <Image
           src="/Hero.jpg"
@@ -52,13 +52,13 @@ export default function Hero() {
         {/* Content */}
         <div
           ref={ref}
-          className="relative z-10 container mx-auto px-5 sm:px-8 py-24 flex flex-col-reverse md:flex-row items-center justify-between gap-12 md:gap-0"
+          className="relative z-10 container mx-auto px-5 sm:px-8 py-12 md:py-24 flex flex-col md:flex-row items-center justify-between gap-12 md:gap-0"
         >
           {/* Text Section */}
           <motion.div
             animate={controls}
             initial={{ opacity: 0, y: 40 }}
-            className="max-w-lg text-center md:text-left"
+            className="max-w-lg text-center md:text-left order-1 md:order-1"
           >
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight text-white drop-shadow-lg">
               Turn Your <span className="text-yellow-400 font-italic">Dreams</span> Into Destination
@@ -72,7 +72,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Polaroid Photos */}
-          <div className="relative w-full md:w-1/2 flex justify-center md:justify-end">
+          <div className="relative w-full md:w-1/2 flex justify-center md:justify-end order-0 md:order-2 mb-8 md:mb-0">
             <div className="relative w-[90%] sm:w-[520px] md:w-[620px] h-[320px] sm:h-[420px] flex items-center justify-center">
               {/* Photo 1 */}
               <motion.div

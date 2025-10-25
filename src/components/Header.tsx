@@ -14,7 +14,7 @@ const Header = () => {
   const navLinks = [
     { label: "Home", href: "/" },
     { label: "Destinations", href: "/destinations" },
-    { label: "About Us", href: "#AboutSection" },  // NOTE this matches id on AboutUs section
+    { label: "About Us", href: "#AboutSection" },
     { label: "Gallery", href: "#gallery" },
   ];
 
@@ -30,22 +30,20 @@ const Header = () => {
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
   }, [menuOpen]);
 
-  // Navigate to Contact Booking page
   const handleContactUs = () => {
     setMenuOpen(false);
     router.push("/contact-booking");
   };
 
-  // Handle nav link click for smooth scroll or navigation
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
     if (href.startsWith("#")) {
       e.preventDefault();
       setMenuOpen(false);
-      const id = href.substring(1);
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+      const element = document.getElementById(href.substring(1));
+      if (element) element.scrollIntoView({ behavior: "smooth" });
     } else {
       e.preventDefault();
       setMenuOpen(false);
@@ -61,10 +59,10 @@ const Header = () => {
       </Head>
 
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ease-in-out ${
+        className={`fixed top-0 left-0 w-full z-50 transition-colors duration-500 ease-in-out ${
           scrolled
-            ? "bg-white/90 backdrop-blur-xl shadow-lg text-gray-900"
-            : "bg-gradient-to-b from-black/50 via-black/25 to-transparent text-white"
+            ? "bg-white/90 backdrop-blur-md shadow-md text-gray-900"
+            : "bg-black/50 text-white"
         }`}
       >
         <div className="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex justify-between items-center">
@@ -136,9 +134,9 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Mobile Menu Overlay */}
+        {/* Mobile Menu */}
         <div
-          className={`fixed inset-0 bg-black/80 backdrop-blur-md flex flex-col items-center justify-center space-y-10 transition-all duration-500 ease-in-out ${
+          className={`fixed inset-0 bg-black/80 backdrop-blur-md flex flex-col items-center justify-center space-y-10 transition-all duration-500 ease-in-out transform ${
             menuOpen
               ? "opacity-100 translate-y-0 pointer-events-auto"
               : "opacity-0 -translate-y-5 pointer-events-none"
@@ -149,7 +147,7 @@ const Header = () => {
               key={label}
               href={href}
               onClick={(e) => handleNavClick(e, href)}
-              className="text-3xl font-semibold text-white hover:text-yellow-400 transition-all"
+              className="text-3xl font-semibold text-white hover:text-yellow-400 transition-all duration-300"
               style={{
                 animation: menuOpen
                   ? `fadeIn 0.5s ease ${i * 0.1 + 0.2}s forwards`
@@ -163,7 +161,7 @@ const Header = () => {
           {/* Mobile Contact Button */}
           <button
             onClick={handleContactUs}
-            className="px-8 py-3 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-full shadow-md hover:scale-105 transition-all text-xl font-semibold"
+            className="px-8 py-3 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-full shadow-md hover:scale-105 transition-transform text-xl font-semibold"
           >
             Contact Us
           </button>
