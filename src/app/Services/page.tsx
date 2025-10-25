@@ -9,8 +9,7 @@ import {
   School,
   Users,
   Heart,
-  User,
-  Globe,
+  User
 } from "lucide-react";
 
 export default function ServicesPage() {

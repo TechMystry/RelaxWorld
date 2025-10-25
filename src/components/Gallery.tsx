@@ -1,56 +1,34 @@
 'use client';
-import { motion } from 'motion/react';
-import { useState } from 'react';
+
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 
 export function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const galleryImages = [
-    {
-      url: "/Photo_1.jpg",
-      title: "Tropical Paradise",
-      span: "row-span-2"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1543169564-be8896b30cdb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-      title: "Mountain Adventures"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1593131540982-57778192fc21?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-      title: "European Cities"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1602410125631-7e736e36797c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-      title: "Safari Expeditions",
-      span: "col-span-2"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-      title: "Group Adventures"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1722409195473-d322e99621e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-      title: "Luxury Resorts"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1665332025142-54d6daee4173?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-      title: "Cultural Wonders"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1644659513503-abcbf75b4521?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-      title: "Northern Lights",
-      span: "row-span-2"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1507669653186-6d573feb190c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-      title: "Desert Dreams"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1746900830074-baf6ddf20bca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-      title: "Ocean Cruises"
-    }
+    { url: "/Photo_1.jpg", title: "Tropical Paradise", span: "row-span-2" },
+    { url: "https://images.unsplash.com/photo-1543169564-be8896b30cdb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080", title: "Mountain Adventures" },
+    { url: "https://images.unsplash.com/photo-1593131540982-57778192fc21?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080", title: "European Cities" },
+    { url: "https://images.unsplash.com/photo-1602410125631-7e736e36797c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080", title: "Safari Expeditions", span: "col-span-2" },
+    { url: "https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080", title: "Group Adventures" },
+    { url: "https://images.unsplash.com/photo-1722409195473-d322e99621e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080", title: "Luxury Resorts" },
+    { url: "https://images.unsplash.com/photo-1665332025142-54d6daee4173?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080", title: "Cultural Wonders" },
+    { url: "https://images.unsplash.com/photo-1644659513503-abcbf75b4521?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080", title: "Northern Lights", span: "row-span-2" },
+    { url: "https://images.unsplash.com/photo-1507669653186-6d573feb190c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080", title: "Desert Dreams" },
+    { url: "https://images.unsplash.com/photo-1746900830074-baf6ddf20bca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080", title: "Ocean Cruises" },
   ];
+
+  // Close lightbox on Escape key
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedImage(null);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, []);
 
   return (
     <section id="gallery" className="py-20 bg-gradient-to-b from-white to-gray-50">
@@ -65,9 +43,7 @@ export function Gallery() {
         >
           <h2 className="text-4xl font-bold mb-4 text-black">
             Gallery of{" "}
-            <span className="ml-2 font-signature text-5xl text-red-600">
-              Dreams
-            </span>
+            <span className="ml-2 font-signature text-5xl text-red-600">Dreams</span>
           </h2>
           <p className="text-gray-600 text-xl max-w-2xl mx-auto">
             A glimpse into the extraordinary experiences awaiting you
@@ -81,15 +57,19 @@ export function Gallery() {
               key={index}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.05 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05, duration: 0.5 }}
               className={`relative overflow-hidden rounded-2xl cursor-pointer group ${image.span || ''}`}
               onClick={() => setSelectedImage(image.url)}
             >
-              <img
+              <Image
                 src={image.url}
                 alt={image.title}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover rounded-2xl"
+                sizes="(max-width: 768px) 100vw, 25vw"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -101,29 +81,37 @@ export function Gallery() {
       </div>
 
       {/* Lightbox */}
-      {selectedImage && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
-        >
-          <button
-            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-50"
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
             onClick={() => setSelectedImage(null)}
           >
-            <X className="w-8 h-8" />
-          </button>
-          <motion.img
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-            src={selectedImage}
-            alt="Gallery"
-            className="max-w-full max-h-full object-contain rounded-xl shadow-2xl"
-          />
-        </motion.div>
-      )}
+            <button
+              className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-50"
+              onClick={() => setSelectedImage(null)}
+            >
+              <X className="w-8 h-8" />
+            </button>
+            <motion.div
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.8 }}
+            >
+              <Image
+                src={selectedImage}
+                alt="Gallery"
+                width={1200}
+                height={800}
+                className="max-w-full max-h-full object-contain rounded-xl shadow-2xl"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
