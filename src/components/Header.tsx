@@ -59,10 +59,10 @@ const Header = () => {
       </Head>
 
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-colors duration-500 ease-in-out ${
+        className={`fixed sessional top-0 left-0 w-full z-50 transition-colors duration-500 ease-in-out ${
           scrolled
             ? "bg-white/90 backdrop-blur-md shadow-md text-gray-900"
-            : "bg-black/50 text-white"
+            : "bg-transparent text-white"
         }`}
       >
         <div className="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex justify-between items-center">
@@ -74,11 +74,11 @@ const Header = () => {
           >
             <Plane
               className={`w-6 h-6 transition-colors ${
-                scrolled ? "text-orange-500" : "text-yellow-300 animate-pulse"
+                scrolled ? "text-red-600" : "text-red-500 animate-pulse"
               }`}
             />
             <span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-orange-400 to-pink-500">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-500 to-red-600">
                 Relax
               </span>
               <span className={scrolled ? "text-gray-800" : "text-white"}>
@@ -99,8 +99,8 @@ const Header = () => {
                   scrolled ? "text-gray-700" : "text-white"
                 }`}
               >
-                <span className="group-hover:text-yellow-400">{label}</span>
-                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-yellow-300 to-orange-400 transition-all duration-500 group-hover:w-full" />
+                <span className="group-hover:text-red-500">{label}</span>
+                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-red-400 to-red-600 transition-all duration-500 group-hover:w-full" />
               </a>
             ))}
           </nav>
@@ -111,8 +111,8 @@ const Header = () => {
               onClick={handleContactUs}
               className={`px-5 py-2 rounded-full font-semibold shadow-md transition-transform duration-300 hover:scale-105 ${
                 scrolled
-                  ? "bg-gradient-to-r from-yellow-400 to-orange-500 text-white"
-                  : "bg-gradient-to-r from-yellow-300 to-orange-400 text-gray-900"
+                  ? "bg-gradient-to-r from-red-500 to-red-600 text-white"
+                  : "bg-gradient-to-r from-red-400 to-red-500 text-white"
               }`}
             >
               Contact Us
@@ -127,9 +127,9 @@ const Header = () => {
             className="md:hidden p-2 rounded-full hover:bg-white/10 transition"
           >
             {menuOpen ? (
-              <X className="w-7 h-7 text-yellow-400" />
+              <X className="w-7 h-7 text-red-500" />
             ) : (
-              <Menu className="w-7 h-7 text-yellow-400" />
+              <Menu className="w-7 h-7 text-red-500" />
             )}
           </button>
         </div>
@@ -147,7 +147,7 @@ const Header = () => {
               key={label}
               href={href}
               onClick={(e) => handleNavClick(e, href)}
-              className="text-3xl font-semibold text-white hover:text-yellow-400 transition-all duration-300"
+              className="text-3xl font-semibold text-white hover:text-red-500 transition-all duration-300"
               style={{
                 animation: menuOpen
                   ? `fadeIn 0.5s ease ${i * 0.1 + 0.2}s forwards`
@@ -161,7 +161,7 @@ const Header = () => {
           {/* Mobile Contact Button */}
           <button
             onClick={handleContactUs}
-            className="px-8 py-3 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-full shadow-md hover:scale-105 transition-transform text-xl font-semibold"
+            className="px-8 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-full shadow-md hover:scale-105 transition-transform text-xl font-semibold"
           >
             Contact Us
           </button>

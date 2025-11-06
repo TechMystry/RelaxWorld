@@ -135,7 +135,7 @@ export default function Footer() {
               <Phone className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
               <div>
                 <p className="font-semibold text-white">Call us</p>
-                <p>+91 94040 14786 (WhatsApp)</p>
+                <p>+91 94040 14786</p>
                 <p>+91 88559 94999</p>
               </div>
             </div>
