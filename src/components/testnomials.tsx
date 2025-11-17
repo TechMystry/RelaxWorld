@@ -148,7 +148,7 @@ export default function TestimonialsSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            Don&apos;t just take our word for it &mdash; hear from travelers who&apos;ve experienced unforgettable journeys with Relax Holidays.
+            Don&apos;t just take our word for it hear from travelers who&apos;ve experienced unforgettable journeys with Relax Holidays.
           </motion.p>
         </motion.div>
 
@@ -281,7 +281,7 @@ export default function TestimonialsSection() {
                 {testimonial.trip}
               </span>
             </motion.div>
-          ))}
+          )) }
         </div>
       </div>
 
@@ -292,6 +292,21 @@ export default function TestimonialsSection() {
           font-family: 'Great Vibes', cursive;
           font-weight: 400;
           font-size: 1.2em;
+        }
+
+        /* === Added to prevent flicker of fixed UI (header / whatsapp / hamburger) during animations ===
+           Promotes fixed elements to their own composite layer and hints the browser about upcoming changes.
+           This is the minimal, non-invasive fix — it usually resolves flicker caused by heavy animating content.
+        */
+        header,
+        .whatsapp-float,
+        .hamburger-btn,
+        .fixed {
+          -webkit-transform: translate3d(0,0,0);
+          transform: translate3d(0,0,0);
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          will-change: transform, opacity;
         }
       `}</style>
     </section>

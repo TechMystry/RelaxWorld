@@ -134,23 +134,30 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* ✅ Side Drawer Mobile Menu */}
         <div
-          className={`fixed inset-0 bg-black/80 backdrop-blur-md flex flex-col items-center justify-center space-y-10 transition-all duration-500 ease-in-out transform ${
-            menuOpen
-              ? "opacity-100 translate-y-0 pointer-events-auto"
-              : "opacity-0 -translate-y-5 pointer-events-none"
+          className={`fixed top-0 right-0 h-full w-64 bg-black/95 backdrop-blur-md flex flex-col items-start justify-start px-6 pt-24 pb-10 space-y-8 transform transition-transform duration-500 ease-in-out z-40 ${
+            menuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
+          {/* Close Button */}
+          <button
+            onClick={() => setMenuOpen(false)}
+            aria-label="Close menu"
+            className="absolute top-6 right-6 p-3 rounded-full hover:bg-white/10 transition"
+          >
+            <X className="w-8 h-8 text-red-500" />
+          </button>
+
           {navLinks.map(({ label, href }, i) => (
             <a
               key={label}
               href={href}
               onClick={(e) => handleNavClick(e, href)}
-              className="text-3xl font-semibold text-white hover:text-red-500 transition-all duration-300"
+              className="text-xl font-semibold text-white hover:text-red-500 transition-all duration-300"
               style={{
                 animation: menuOpen
-                  ? `fadeIn 0.5s ease ${i * 0.1 + 0.2}s forwards`
+                  ? `fadeIn 0.4s ease ${i * 0.1 + 0.2}s forwards`
                   : "none",
               }}
             >
@@ -161,7 +168,7 @@ const Header = () => {
           {/* Mobile Contact Button */}
           <button
             onClick={handleContactUs}
-            className="px-8 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-full shadow-md hover:scale-105 transition-transform text-xl font-semibold"
+            className="mt-6 px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-full shadow-md hover:scale-105 transition-transform text-lg font-semibold"
           >
             Contact Us
           </button>

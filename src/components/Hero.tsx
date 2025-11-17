@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Dancing_Script } from "next/font/google";
+import Link from "next/link";
 
 const signatureFont = Dancing_Script({ subsets: ["latin"], weight: ["700"] });
 
@@ -15,9 +16,10 @@ const heroSlides = [
     title: "Turn Your Dreams Into Destinations",
     subtitle: "Adventure. Culture. Memories.",
     description:
-      "We create unforgettable travel experiences — from hidden gems to bucket-list destinations.",
+      "We create unforgettable travel experiences from hidden gems to bucket-list destinations.",
     highlight: "Dreams",
     cta: "Explore Destinations",
+    link: "/destinations", // ✅ added link
   },
   {
     id: 2,
@@ -28,6 +30,7 @@ const heroSlides = [
       "Experience the joy of traveling with your loved ones. Custom group packages designed for unforgettable bonding.",
     highlight: "Group",
     cta: "Plan Group Trip",
+    link: "/contact-booking", // ✅ added link
   },
   {
     id: 3,
@@ -38,6 +41,7 @@ const heroSlides = [
       "Safe and enriching travel experiences for schools and colleges. Combining education with adventure.",
     highlight: "Educational",
     cta: "Book Student Tour",
+    link: "/contact-booking", // ✅ added link
   },
 ];
 
@@ -85,7 +89,7 @@ export default function Hero() {
               className="object-cover object-center select-none brightness-[0.55] contrast-110"
               sizes="100vw"
             />
-            {/* Layered Overlays for better visibility */}
+            {/* Layered Overlays */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70" />
             <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60" />
           </motion.div>
@@ -139,13 +143,15 @@ export default function Hero() {
                 </p>
 
                 {/* CTA Button */}
-                <motion.button
-                  whileHover={{ scale: 1.07 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-red-600 hover:bg-red-700 text-white font-bold text-base sm:text-lg px-8 sm:px-12 py-3 sm:py-4 rounded-full shadow-[0_0_15px_rgba(255,0,0,0.5)] hover:shadow-[0_0_25px_rgba(255,0,0,0.7)] transition-all duration-300"
-                >
-                  {currentData.cta}
-                </motion.button>
+                <Link href={currentData.link}>
+                  <motion.button
+                    whileHover={{ scale: 1.07 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-red-600 hover:bg-red-700 text-white font-bold text-base sm:text-lg px-8 sm:px-12 py-3 sm:py-4 rounded-full shadow-[0_0_15px_rgba(255,0,0,0.5)] hover:shadow-[0_0_25px_rgba(255,0,0,0.7)] transition-all duration-300"
+                  >
+                    {currentData.cta}
+                  </motion.button>
+                </Link>
               </motion.div>
             </AnimatePresence>
           </div>
