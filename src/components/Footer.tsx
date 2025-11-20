@@ -102,7 +102,7 @@ export default function Footer() {
                 href="mailto:info@relaxholidays.com"
                 className="hover:text-blue-400 transition-colors"
               >
-                info@relaxholidays.com
+                info@relaxworld.in
               </a>
             </div>
           </div>

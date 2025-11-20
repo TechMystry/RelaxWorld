@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Great_Vibes } from "next/font/google";
 import "./globals.css";
-import WhatsAppButton from "@/components/WhatsAppButton"; // ✅ added import
+import WhatsAppButton from "@/components/WhatsAppButton"; // WhatsApp button
+import TawkChat from "@/components/TawkChat"; // Tawk.to chat widget
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,16 +25,15 @@ export const metadata: Metadata = {
   description: "Find and book a great experience.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${greatVibes.variable} antialiased`}
       >
         {children}
-        <WhatsAppButton /> {/* ✅ stays fixed globally, no flicker or jump */}
+        <WhatsAppButton /> {/* stays fixed globally */}
+        <TawkChat /> {/* Tawk.to widget added globally */}
       </body>
     </html>
   );
