@@ -18,14 +18,12 @@ const Header = () => {
     { label: "Gallery", href: "#gallery" },
   ];
 
-  // Detect scroll
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Prevent background scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
   }, [menuOpen]);
@@ -59,13 +57,13 @@ const Header = () => {
       </Head>
 
       <header
-        className={`fixed sessional top-0 left-0 w-full z-50 transition-colors duration-500 ease-in-out ${
+        className={`fixed top-0 left-0 w-full z-50 transition-colors duration-500 ease-in-out ${
           scrolled
             ? "bg-white/90 backdrop-blur-md shadow-md text-gray-900"
             : "bg-transparent text-white"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex justify-between items-center relative">
           {/* Logo */}
           <Link
             href="/"
@@ -118,29 +116,33 @@ const Header = () => {
               Contact Us
             </button>
           </div>
-
-          {/* Mobile Menu Toggle */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-            className="md:hidden p-2 rounded-full hover:bg-white/10 transition"
-          >
-            {menuOpen ? (
-              <X className="w-7 h-7 text-red-500" />
-            ) : (
-              <Menu className="w-7 h-7 text-red-500" />
-            )}
-          </button>
         </div>
 
-        {/* ✅ Side Drawer Mobile Menu */}
+        {/* Mobile Menu Toggle (Fixed to prevent flicker) */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          className="md:hidden p-2 rounded-full hover:bg-white/10 transition fixed top-4 right-4 z-50"
+          style={{
+            backfaceVisibility: "hidden",
+            transform: "translateZ(0)",
+            willChange: "transform",
+          }}
+        >
+          {menuOpen ? (
+            <X className="w-7 h-7 text-red-500" />
+          ) : (
+            <Menu className="w-7 h-7 text-red-500" />
+          )}
+        </button>
+
+        {/* Side Drawer Mobile Menu */}
         <div
           className={`fixed top-0 right-0 h-full w-64 bg-black/95 backdrop-blur-md flex flex-col items-start justify-start px-6 pt-24 pb-10 space-y-8 transform transition-transform duration-500 ease-in-out z-40 ${
             menuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          {/* Close Button */}
           <button
             onClick={() => setMenuOpen(false)}
             aria-label="Close menu"
@@ -165,7 +167,6 @@ const Header = () => {
             </a>
           ))}
 
-          {/* Mobile Contact Button */}
           <button
             onClick={handleContactUs}
             className="mt-6 px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-full shadow-md hover:scale-105 transition-transform text-lg font-semibold"
@@ -174,7 +175,6 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Animations */}
         <style jsx>{`
           @keyframes fadeIn {
             from {

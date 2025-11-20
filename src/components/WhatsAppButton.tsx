@@ -7,12 +7,22 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
-      className="fixed right-5 bottom-10 z-[9999] bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-transform duration-300 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-green-300"
+      className="
+        fixed right-0 top-1/2 transform -translate-y-1/2
+        bg-green-500 hover:bg-green-600
+        text-white px-5 py-3 rounded-l-full shadow-xl
+        flex items-center justify-center
+        z-50
+        transition-transform duration-300 hover:scale-110
+        focus:outline-none focus:ring-4 focus:ring-green-300
+        backface-visibility-hidden
+        will-change-transform
+        transform-gpu
+      "
       style={{
-        transform: 'translateZ(0)',
-        WebkitTransform: 'translateZ(0)',
-        willChange: 'transform',
         backfaceVisibility: 'hidden',
+        transform: 'translateZ(0)',
+        willChange: 'transform',
       }}
     >
       <svg

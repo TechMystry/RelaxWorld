@@ -19,7 +19,7 @@ const heroSlides = [
       "We create unforgettable travel experiences from hidden gems to bucket-list destinations.",
     highlight: "Dreams",
     cta: "Explore Destinations",
-    link: "/destinations", // ✅ added link
+    link: "/destinations",
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ const heroSlides = [
       "Experience the joy of traveling with your loved ones. Custom group packages designed for unforgettable bonding.",
     highlight: "Group",
     cta: "Plan Group Trip",
-    link: "/contact-booking", // ✅ added link
+    link: "/contact-booking",
   },
   {
     id: 3,
@@ -41,7 +41,7 @@ const heroSlides = [
       "Safe and enriching travel experiences for schools and colleges. Combining education with adventure.",
     highlight: "Educational",
     cta: "Book Student Tour",
-    link: "/contact-booking", // ✅ added link
+    link: "/contact-booking",
   },
 ];
 
@@ -89,7 +89,6 @@ export default function Hero() {
               className="object-cover object-center select-none brightness-[0.55] contrast-110"
               sizes="100vw"
             />
-            {/* Layered Overlays */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70" />
             <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60" />
           </motion.div>
@@ -110,7 +109,6 @@ export default function Hero() {
                   ease: "easeOut",
                 }}
               >
-                {/* Subtitle */}
                 <motion.p
                   className="text-red-400 text-sm sm:text-base md:text-lg font-semibold mb-5 tracking-widest uppercase"
                   initial={{ opacity: 0 }}
@@ -120,7 +118,6 @@ export default function Hero() {
                   {currentData.subtitle}
                 </motion.p>
 
-                {/* Main Title */}
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                   {currentData.title.split(currentData.highlight)[0]}
                   <span
@@ -137,12 +134,10 @@ export default function Hero() {
                   {currentData.title.split(currentData.highlight)[1]}
                 </h1>
 
-                {/* Description */}
                 <p className="text-gray-200 text-base sm:text-lg md:text-xl lg:text-2xl mb-10 max-w-3xl mx-auto leading-relaxed">
                   {currentData.description}
                 </p>
 
-                {/* CTA Button */}
                 <Link href={currentData.link}>
                   <motion.button
                     whileHover={{ scale: 1.07 }}

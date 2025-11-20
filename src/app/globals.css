@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+html {
+  scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
